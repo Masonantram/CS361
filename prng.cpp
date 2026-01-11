@@ -7,29 +7,30 @@
 #include<unistd.h>
 #include<fstream>
 
-
-int prng () {
-
+int main()
+{
     std::string text;
     int random = 0;
 
-    sleep(1);
-    srand(time(0));
-    std::ifstream prngfile("prng-service.txt");
-    prngfile >> text;
+    while (true)
+    {
+        sleep(1);
+        srand(time(0));
+        std::ifstream prngfilein("prng-service.txt");
+        prngfilein >> text;
+        prngfilein.close();
+        std::cout << "text = " << text << std::endl;
 
-    if (text == "default") {
-        random = rand();
+        if (text == "run") {
+            random = rand();
+            std::ofstream prngfileout("prng-service.txt");
+            prngfileout << random;
+            prngfileout.close();
+
+        }
+
+        std::cout << "random is " << random << std::endl;
     }
-
-    return random;
-
-}
-
-int main()
-{
-
-    std::cout << "random number is " << prng() << std::endl;
 
     return 0;
 }
