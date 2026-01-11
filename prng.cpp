@@ -1,5 +1,5 @@
 // prng.cpp
-// Created by Mason Antram on 1/10/2026.
+// Created by Mason Antram 1/10/2026.
 // Creates a pseudo-random number
 
 #include<iostream>
@@ -29,7 +29,6 @@ int main()
 
         }
 
-        std::cout << "random is " << random << std::endl;
     }
 
     return 0;
